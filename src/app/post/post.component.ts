@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { Post } from '../models/Post.model';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -7,23 +9,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
-  @Input() postTitle: string;
-  @Input() postContent: string;
-  @Input() postLoveIts: number;
-
-  postCreated_at = new Date();
+  @Input() post: Post;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  isLiked() {
-    this.postLoveIts += 1;
+  like(): void {
+    this.post.loveIts += 1;
   }
 
-  disLiked() {
-    this.postLoveIts -= 1;
+  dislike(): void {
+    this.post.loveIts -= 1;
   }
 
   getPostStatus() {
